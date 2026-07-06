@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaaNTE 入群验证问卷</title>
+  <meta name="description" content="MaaNTE 用户群入群验证问卷，题库来自 MaaNTE 用户文档与开发者文档。">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero card">
+      <div>
+        <p class="eyebrow">MaaNTE 入群验证</p>
+        <h1>文档阅读小测</h1>
+        <p class="hero-text">题库共 <strong id="total-count">50</strong> 道单选题：20 道用户文档 / 常见问题 / 问题排查，30 道开发者文档。每次随机抽题，提交后显示得分与错题解析。</p>
+      </div>
+      <div class="hero-actions">
+        <label class="field">
+          抽题数量
+          <select id="question-count">
+            <option value="10" selected>10 题</option>
+            <option value="15">15 题</option>
+            <option value="20">20 题</option>
+            <option value="50">全部 50 题</option>
+          </select>
+        </label>
+        <label class="field">
+          通过线
+          <select id="pass-score">
+            <option value="60">60%</option>
+            <option value="70">70%</option>
+            <option value="80" selected>80%</option>
+            <option value="90">90%</option>
+          </select>
+        </label>
+        <button id="start-btn" type="button">开始答题</button>
+      </div>
+    </section>
+
+    <section id="quiz-card" class="card hidden" aria-live="polite">
+      <div class="quiz-header">
+        <div>
+          <p class="eyebrow" id="progress-text">第 1 / 10 题</p>
+          <h2 id="question-title"></h2>
+        </div>
+        <span id="category-pill" class="pill"></span>
+      </div>
+      <form id="options-form" class="options"></form>
+      <div class="quiz-footer">
+        <button id="prev-btn" type="button" class="secondary">上一题</button>
+        <button id="next-btn" type="button">下一题</button>
+      </div>
+    </section>
+
+    <section id="result-card" class="card hidden" aria-live="polite">
+      <p class="eyebrow">答题结果</p>
+      <h2 id="result-title"></h2>
+      <p id="result-summary" class="hero-text"></p>
+      <div class="result-actions">
+        <button id="retry-btn" type="button">重新抽题</button>
+        <button id="review-btn" type="button" class="secondary">查看错题</button>
+      </div>
+      <div id="review-list" class="review-list hidden"></div>
+    </section>
+
+    <section class="card docs-card">
+      <h2>参考文档</h2>
+      <ul>
+        <li><a href="https://maante.org/zh_cn/userdocs/" target="_blank" rel="noreferrer">MaaNTE 用户文档</a></li>
+        <li><a href="https://maante.org/zh_cn/userdocs/FAQ.html" target="_blank" rel="noreferrer">常见问题</a></li>
+        <li><a href="https://maante.org/zh_cn/userdocs/trouble_shooting.html" target="_blank" rel="noreferrer">问题排查手册</a></li>
+        <li><a href="https://maante.org/zh_cn/develop/" target="_blank" rel="noreferrer">MaaNTE 开发者文档</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="./questions.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
