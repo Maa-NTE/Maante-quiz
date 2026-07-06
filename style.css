@@ -104,6 +104,17 @@ select {
   color: var(--text);
 }
 
+.rule-box {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  color: var(--brand);
+  background: #f7f8ff;
+  font-weight: 800;
+}
+
 button {
   border: 0;
   border-radius: 14px;

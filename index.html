@@ -13,27 +13,13 @@
       <div>
         <p class="eyebrow">MaaNTE 入群验证</p>
         <h1>文档阅读小测</h1>
-        <p class="hero-text">题库共 <strong id="total-count">50</strong> 道单选题：20 道用户文档 / 常见问题 / 问题排查，30 道开发者文档。每次随机抽题，提交后显示得分与错题解析。</p>
+        <p class="hero-text">题库共 <strong id="total-count">50</strong> 道单选题：20 道用户文档 / 常见问题 / 问题排查，30 道开发者文档。每次固定随机抽取 <strong id="quiz-count">20</strong> 题，选项顺序也会随机打乱；答对率达到 <strong id="pass-score-text">95%</strong> 才算通过。</p>
       </div>
       <div class="hero-actions">
-        <label class="field">
-          抽题数量
-          <select id="question-count">
-            <option value="10" selected>10 题</option>
-            <option value="15">15 题</option>
-            <option value="20">20 题</option>
-            <option value="50">全部 50 题</option>
-          </select>
-        </label>
-        <label class="field">
-          通过线
-          <select id="pass-score">
-            <option value="60">60%</option>
-            <option value="70">70%</option>
-            <option value="80" selected>80%</option>
-            <option value="90">90%</option>
-          </select>
-        </label>
+        <div class="rule-box">
+          <span>抽题数量：20 题</span>
+          <span>通过要求：95%</span>
+        </div>
         <button id="start-btn" type="button">开始答题</button>
       </div>
     </section>

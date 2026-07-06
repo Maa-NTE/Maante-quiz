@@ -1,3 +1,6 @@
+const QUIZ_QUESTION_COUNT = 20;
+const PASS_SCORE = 95;
+
 const state = {
   activeQuestions: [],
   answers: [],
@@ -6,8 +9,8 @@ const state = {
 };
 
 const totalCount = document.querySelector('#total-count');
-const questionCount = document.querySelector('#question-count');
-const passScore = document.querySelector('#pass-score');
+const quizCount = document.querySelector('#quiz-count');
+const passScoreText = document.querySelector('#pass-score-text');
 const startBtn = document.querySelector('#start-btn');
 const quizCard = document.querySelector('#quiz-card');
 const resultCard = document.querySelector('#result-card');
@@ -24,6 +27,8 @@ const reviewBtn = document.querySelector('#review-btn');
 const reviewList = document.querySelector('#review-list');
 
 totalCount.textContent = QUESTIONS.length;
+quizCount.textContent = QUIZ_QUESTION_COUNT;
+passScoreText.textContent = `${PASS_SCORE}%`;
 
 function shuffle(items) {
   return [...items]
@@ -32,9 +37,18 @@ function shuffle(items) {
     .map(({ item }) => item);
 }
 
+function prepareQuestion(question) {
+  const shuffledOptions = shuffle(question.options.map((option, index) => ({ option, originalIndex: index })));
+  return {
+    ...question,
+    options: shuffledOptions.map((item) => item.option),
+    answer: shuffledOptions.findIndex((item) => item.originalIndex === question.answer),
+  };
+}
+
 function startQuiz() {
-  const count = Math.min(Number(questionCount.value), QUESTIONS.length);
-  state.activeQuestions = shuffle(QUESTIONS).slice(0, count);
+  const count = Math.min(QUIZ_QUESTION_COUNT, QUESTIONS.length);
+  state.activeQuestions = shuffle(QUESTIONS).slice(0, count).map(prepareQuestion);
   state.answers = Array(count).fill(null);
   state.current = 0;
   state.result = null;
@@ -117,7 +131,7 @@ function finishQuiz() {
   });
   const correctCount = details.filter((item) => item.correct).length;
   const percent = Math.round((correctCount / details.length) * 100);
-  const passLine = Number(passScore.value);
+  const passLine = PASS_SCORE;
   state.result = { details, correctCount, percent, passLine };
 
   quizCard.classList.add('hidden');
