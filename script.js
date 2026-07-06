@@ -57,6 +57,13 @@ function startQuiz() {
   resultCard.classList.add('hidden');
   quizCard.classList.remove('hidden');
   renderQuestion();
+  if (typeof quizCard.scrollIntoView === 'function') {
+    try {
+      quizCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (_) {
+      quizCard.scrollIntoView(true);
+    }
+  }
 }
 
 function renderQuestion() {
@@ -83,12 +90,14 @@ function renderQuestion() {
 }
 
 function escapeHtml(value) {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
+  const entities = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return String(value).replace(/[&<>"']/g, (char) => entities[char]);
 }
 
 function saveCurrentAnswer() {
