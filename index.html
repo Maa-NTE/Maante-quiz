@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MaaNTE 入群验证问卷</title>
-  <meta name="description" content="MaaNTE 用户群入群验证问卷，题库来自 MaaNTE 用户文档与开发者文档。">
+  <meta name="description" content="MaaNTE 用户群入群验证问卷，题库来自 MaaNTE 功能介绍、问题排查与开发者文档。">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
       <div>
         <p class="eyebrow">MaaNTE 入群验证</p>
         <h1>文档阅读小测</h1>
-        <p class="hero-text">题库共 <strong id="total-count">50</strong> 道单选题：20 道用户文档 / 常见问题 / 问题排查，30 道开发者文档。每次固定随机抽取 <strong id="quiz-count">20</strong> 题，选项顺序也会随机打乱；答对率达到 <strong id="pass-score-text">95%</strong> 才算通过。</p>
+        <p class="hero-text">题库共 <strong id="total-count">200</strong> 道单选题，覆盖功能介绍、问题排查与开发者文档。每次固定随机抽取 <strong id="quiz-count">20</strong> 题，选项顺序也会随机打乱；答对率达到 <strong id="pass-score-text">95%</strong> 才算通过。</p>
       </div>
       <div class="hero-actions">
         <div class="rule-box">
@@ -27,7 +27,7 @@
     <section id="quiz-card" class="card hidden" aria-live="polite">
       <div class="quiz-header">
         <div>
-          <p class="eyebrow" id="progress-text">第 1 / 10 题</p>
+          <p class="eyebrow" id="progress-text">第 1 / 20 题</p>
           <h2 id="question-title"></h2>
         </div>
         <span id="category-pill" class="pill"></span>
@@ -53,9 +53,8 @@
     <section class="card docs-card">
       <h2>参考文档</h2>
       <ul>
-        <li><a href="https://maante.org/zh_cn/userdocs/" target="_blank" rel="noreferrer">MaaNTE 用户文档</a></li>
-        <li><a href="https://maante.org/zh_cn/userdocs/FAQ.html" target="_blank" rel="noreferrer">常见问题</a></li>
-        <li><a href="https://maante.org/zh_cn/userdocs/trouble_shooting.html" target="_blank" rel="noreferrer">问题排查手册</a></li>
+        <li><a href="https://maante.org/zh_cn/introduction.html" target="_blank" rel="noreferrer">功能介绍</a></li>
+        <li><a href="https://maante.org/zh_cn/问题排查.html" target="_blank" rel="noreferrer">问题排查手册</a></li>
         <li><a href="https://maante.org/zh_cn/develop/" target="_blank" rel="noreferrer">MaaNTE 开发者文档</a></li>
       </ul>
     </section>
