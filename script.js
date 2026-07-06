@@ -1,5 +1,7 @@
 const QUIZ_QUESTION_COUNT = 20;
 const PASS_SCORE = 95;
+const INTERNAL_GROUP = '1101715530';
+const DEVELOPER_GROUP = '1092630280';
 
 const state = {
   activeQuestions: [],
@@ -145,9 +147,12 @@ function finishQuiz() {
 
   quizCard.classList.add('hidden');
   resultCard.classList.remove('hidden');
-  resultTitle.textContent = percent >= passLine ? '通过验证' : '未达到通过线';
-  resultTitle.style.color = percent >= passLine ? 'var(--success)' : 'var(--danger)';
-  resultSummary.textContent = `你答对 ${correctCount} / ${details.length} 题，得分 ${percent}%，通过线为 ${passLine}%。`;
+  const passed = percent >= passLine;
+  resultTitle.textContent = passed ? '欢迎通过测试' : '未达到通过线';
+  resultTitle.style.color = passed ? 'var(--success)' : 'var(--danger)';
+  resultSummary.textContent = passed
+    ? `你答对 ${correctCount} / ${details.length} 题，得分 ${percent}%。内测群：${INTERNAL_GROUP}，开发者群：${DEVELOPER_GROUP}。`
+    : `你答对 ${correctCount} / ${details.length} 题，得分 ${percent}%，通过线为 ${passLine}%。`;
   renderReview(false);
 }
 
